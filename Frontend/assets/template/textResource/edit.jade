@@ -1,0 +1,15 @@
+include ..\mixins
+
+form.form-horizontal(ng-submit="submit()" name="resourceEditForm" ng-class="{ loading: isLoading }")
+    +loader
+    .modal-header
+        h3.modal-title Изменение текста
+    .modal-body
+        .alert.alert-danger(role="alert" ng-show="Error")
+            a.alert-link {{Error}}
+        .form-group
+            .col-sm-10
+                input.form-control(type="text" placeholder="Введите новое значение" ng-model="model.value")
+    .modal-footer
+        button.btn.btn-primary(type="submit") Ок
+        button.btn.btn-default(type="button" ng-click="$close()") Отмена

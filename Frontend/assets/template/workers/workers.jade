@@ -1,0 +1,57 @@
+include ..\mixins
+form.row(ng-submit="submit()" name="searchForm")
+    .col-md-2
+        h3(style="border-bottom: 1px solid; padding: 10px;" ng-show="model.distanceFrom == 1")
+            div(ng-hide="workerTypeEditing")
+                div(ng-click="workerTypeEditing = true" lang-resource resource="workers|{{workerType.name}}")
+            div(ng-show="workerTypeEditing")
+                select(ng-model="workerType" ng-options="workerType.name for workerType in workerTypes track by workerType.id" ng-change="workerTypeEditing = false")
+            div(lang-resource resource="common|in")
+            div
+                div {{model.addressCity}}
+            //div(ng-show="addressEditing")
+                input(ng-model="model.address" ng-places-autocomplete pa-on-place-ready="placeReady" pa-options="paOprions")
+        .form-group
+            label.control-label(lang-resource resource="workers|range_until")
+            div
+                input.form-control(type="range" ng-model="model.distanceUntil" min="0" max="50")
+                span.label.label-info(style="cursor: pointer")
+                    | {{model.distanceUntil}}
+                    span(lang-resource resource="common|kilometers")
+        .form-group
+            label.control-label
+                div(lang-resource resource="common|from")
+                .radio
+                    label(style="color: black;")
+                        input(type="radio" ng-model="model.distanceFrom" value="0")
+                        span(lang-resource resource="workers|filters_me")
+                .radio
+                    label(style="color: black;")
+                        input(type="radio" ng-model="model.distanceFrom" value="1")
+                        span(lang-resource resource="workers|filters_address")
+                input(ng-model="model.address" ng-autocomplete options="paOprions" details="details" ng-show="model.distanceFrom == 1")
+                .radio
+                    label(style="color: black;")
+                        input(type="radio" ng-model="model.distanceFrom" value="2")
+                        span(lang-resource resource="workers|filters_metro")
+        .form-group
+            select.form-control(ng-model="model.metro" ng-options="metro.name for metro in metroes" style="width: 170px;font-size: 12px;font-weight: normal;" ng-show="model.distanceFrom == 2")
+        .form-group(style="border-top: 1px solid; padding: 10px; border-bottom: 1px solid; padding: 10px;")
+            span(lang-resource resource="education|education")
+            select.form-control(ng-model="model.education" ng-options="education.name for education in educations" style="width: 170px;font-size: 12px;font-weight: normal;")
+        button(type="submit" lang-resource resource="workers|filters_apply")
+    .col-md-10(ng-class="{ loading: isLoading }")
+        +loader
+        h3(style="border-bottom: 1px solid; padding: 10px;")
+            div
+                span(lang-resource resource="workers|search_result")
+                span ({{count}})
+            //(lang-resource resource="workers|search_result")
+            //div(infinite-scroll="submit()" infinite-scroll-distance="2")
+            div(ng-repeat="worker in workers" style="padding: 10px; border-bottom: 1px solid;")
+                div {{worker.displayName}}
+                div(style="font-size: 12px; font-style: italic;")
+                    span(lang-resource resource="workers|on_range")
+                    span(style="margin-left: 5px;") {{worker.distance}}
+                    span(lang-resource resource="common|meters")
+                div(style="font-size: 12px; font-style: italic;") {{worker.address}}

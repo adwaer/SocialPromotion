@@ -1,0 +1,5 @@
+div(ng-controller="IdentityCtrl")
+    div(ng-hide="IsAuthentificated")
+        button.btn.btn-default.navbar-btn(ng-dialog template="account/login.html" ctrl="AuthCtrl" lang-resource resource="common|logon")
+    div(ng-show="IsAuthentificated")
+        div(style="padding: 10px; margin: 5px; border: 1px solid #777777; border-radius: 5px;cursor:pointer;" ng-click="logAuth()") {{userName}} - Выйти

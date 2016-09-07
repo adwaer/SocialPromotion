@@ -1,0 +1,61 @@
+include ..\mixins
+
+form.form-horizontal(ng-submit="submit()" name="registerForm" ng-class="{ loading: isLoading }")
+    +loader
+    .modal-header
+        h3.modal-title Регистрация
+    .modal-body
+        .alert.alert-danger(role="alert" ng-show="Error")
+            a.alert-link {{Error}}
+        .form-group
+            label.col-sm-4.control-label Ваше имя
+            .col-sm-8
+                input.form-control(type="text" placeholder="Введите имя" ng-model="model.name" required autocomplete='given-name')
+        .form-group
+            label.col-sm-4.control-label Ваша фамилия
+            .col-sm-8
+                input.form-control(type="text" placeholder="Введите фамилию" ng-model="model.lastName" required autocomplete='family-name')
+        .form-group
+            label.col-sm-4.control-label Ваш e-mail
+            .col-sm-8
+                input.form-control(type="email" placeholder="Введите e-mail" ng-model="model.email" required autocomplete='email')
+                span.label.label-danger(style="cursor: pointer" ng-show="IsEmailBusy" ng-dialog template="account/login.html" ctrl="AuthCtrl") E-mail уже зарегистрирован, a войти?
+        .form-group
+            label.col-sm-4.control-label Ваш телефон
+            .col-sm-8
+                input.form-control(type="tel" placeholder="Введите номер телефона" ng-model="model.phone" required autocomplete='tel')
+        .form-group
+            label.col-sm-4.control-label Ваш пароль
+            .col-sm-8
+                input.form-control(type="password" placeholder="Введите пароль" ng-model="model.password" required minlength="8")
+        .form-group
+            label.col-sm-4.control-label Подтверждение
+            .col-sm-8
+                input.form-control(type="password" placeholder="Введите пароль еще раз" ng-model="model.confirm" required)
+        .form-group(ng-class="{'has-error': IsAddressValid === false}")
+            label.col-sm-4.control-label Адрес
+            .col-sm-8
+                input.form-control(type="text" placeholder="Введите ваш адрес" ng-model="model.address" autocomplete='address-line1' ng-autocomplete options="paOprions" details="details" required)
+                span.label.label-danger(style="cursor: pointer" ng-show="IsAddressValid === false") Необходимо указать улицу или почтовый индекс
+        .form-group
+            label.col-sm-4.control-label Я ищу
+            .col-sm-8
+                select.form-control(placeholder="Выберите.." ng-model="model.customer.searchType" required)
+                    option(value="1") Няню
+                    option(value="2") Сиделку
+                    option(value="3") Домработницу
+                    option(value="4") Зооняню
+                    option(value="5") Репетитора
+                    option(value="6") Работу няни
+                    option(value="7") Работу сиделки
+                    option(value="8") Работу домработницы
+                    option(value="9") Работу зооняни
+                    option(value="10") Работу репетитора
+        .form-group(ng-show="model.customer.searchType > 3")
+            label.col-sm-4.control-label Ваш год рождения
+            .col-sm-8
+                input.form-control(type="date" placeholder="Выберите год рождения" ng-model="model.customer.birthDate" autocomplete='bday')
+
+    .modal-footer
+        button.btn.btn-primary(type="submit") Зарегистрироваться
+        //button.btn.btn-default(type="button" ng-click="$close()") Отмена

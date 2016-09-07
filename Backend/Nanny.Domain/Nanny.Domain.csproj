@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B9A581A-2737-4A2A-9BFD-A8AB749ED2F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nanny.Domain</RootNamespace>
+    <AssemblyName>Nanny.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Adwaer.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Adwaer.Entity.1.0.3\lib\net452\Adwaer.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dto\DictionaryDto.cs" />
+    <Compile Include="Dto\MetroDto.cs" />
+    <Compile Include="Dto\WorkerRelative.cs" />
+    <Compile Include="Dto\WorkersResponse.cs" />
+    <Compile Include="Entities\Base\DictionaryEntity.cs" />
+    <Compile Include="Entities\Dictionaries\AboutHousekeeper.cs" />
+    <Compile Include="Entities\Dictionaries\AboutNanny.cs" />
+    <Compile Include="Entities\Dictionaries\AboutNurse.cs" />
+    <Compile Include="Entities\Dictionaries\AnimalType.cs" />
+    <Compile Include="Entities\Dictionaries\ChildrenCount.cs" />
+    <Compile Include="Entities\Dictionaries\Employment.cs" />
+    <Compile Include="Entities\Dictionaries\HousekeeperWorkingCondition.cs" />
+    <Compile Include="Entities\Dictionaries\HousekeeperWorkingSkill.cs" />
+    <Compile Include="Entities\Dictionaries\Language.cs" />
+    <Compile Include="Entities\Dictionaries\Liveinout.cs" />
+    <Compile Include="Entities\Dictionaries\Metro.cs" />
+    <Compile Include="Entities\Dictionaries\NannyEducation.cs" />
+    <Compile Include="Entities\Dictionaries\NannyWorkingCondition.cs" />
+    <Compile Include="Entities\Dictionaries\NannyWorkingSkill.cs" />
+    <Compile Include="Entities\Dictionaries\NurseEducation.cs" />
+    <Compile Include="Entities\Dictionaries\NurseWorkingCondition.cs" />
+    <Compile Include="Entities\Dictionaries\NurseWorkingSkill.cs" />
+    <Compile Include="Entities\Dictionaries\PetCareEducation.cs" />
+    <Compile Include="Entities\Dictionaries\PetCareWorkingSkill.cs" />
+    <Compile Include="Entities\Dictionaries\Religion.cs" />
+    <Compile Include="Entities\Dictionaries\TeachingSubject.cs" />
+    <Compile Include="Entities\Dictionaries\TutorEducation.cs" />
+    <Compile Include="Entities\Dictionaries\TutorWorkingSkill.cs" />
+    <Compile Include="Entities\Dictionaries\WorkingExperienceAge.cs" />
+    <Compile Include="Entities\Dictionaries\WorkingExperienceDiagnose.cs" />
+    <Compile Include="Entities\Dictionaries\WorkingTerm.cs" />
+    <Compile Include="Entities\HttpDomain.cs" />
+    <Compile Include="Entities\Localization\LangCulture.cs" />
+    <Compile Include="Entities\Location\Address.cs" />
+    <Compile Include="Entities\Location\AddressUnit.cs" />
+    <Compile Include="Entities\Location\AddressDetails.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\CustomerSearch.cs" />
+    <Compile Include="Entities\EmailPublish.cs" />
+    <Compile Include="Entities\Localization\LangResource.cs" />
+    <Compile Include="Entities\Localization\LangResourceValue.cs" />
+    <Compile Include="Entities\Location\Country.cs" />
+    <Compile Include="Entities\Profiles\HousekeeperProfile.cs" />
+    <Compile Include="Entities\Profiles\PetCareProfile.cs" />
+    <Compile Include="Entities\Profiles\TutorProfile.cs" />
+    <Compile Include="Entities\Profiles\NurseProfile.cs" />
+    <Compile Include="Entities\Profiles\NannyProfile.cs" />
+    <Compile Include="Entities\Profiles\WorkerProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\SimpleCustomerAccount.cs" />
+    <Compile Include="Entities\UserRole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nanny.Contract\Nanny.Contract.csproj">
+      <Project>{95FAE606-4F9E-48A5-8BDF-DEDB1E3E9C46}</Project>
+      <Name>Nanny.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nanny.Cqrs\Nanny.Cqrs.csproj">
+      <Project>{ABE851EE-F5AA-4D7F-BD42-F4B45E06BD06}</Project>
+      <Name>Nanny.Cqrs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nanny.Enums\Nanny.Enums.csproj">
+      <Project>{0E2E3DB2-2DB8-46E8-9E2C-D721BC6E27D3}</Project>
+      <Name>Nanny.Enums</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

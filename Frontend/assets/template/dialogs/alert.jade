@@ -1,0 +1,9 @@
+include ..\mixins
+
+div
+    .modal-header
+        h3.modal-title Оповещение
+    .modal-body
+        | {{html}}
+    .modal-footer
+        button.btn.btn-primary(type="submit" ng-click="$close()") Ок
